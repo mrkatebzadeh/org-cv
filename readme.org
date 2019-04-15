@@ -49,18 +49,20 @@ The basic structure of an org file containing your CV is shown next.
 put your foreseen job.
 
 #+attr_html: :class table table-striped
-| Field    | Description                                        |
-|----------+----------------------------------------------------|
-| TITLE    | Desired job                                        |
-| AUTHOR   | Who you are?                                       |
-| EMAIL    | Your contact email                                 |
-| ADDRESS  | Mailing address, this can span over multiple lines |
-| HOMEPAGE | URL of your website                                |
-| MOBILE   | Mobile phone                                       |
-| GITHUB   | GitHub user                                        |
-| GITLAB   | GitLab user                                        |
-| LINKEDIN | Linkedin username                                  |
-| PHOTO    | path to photo file                                 |
+| Field    | Description                                            |
+|----------+--------------------------------------------------------|
+| TITLE    | Desired job                                            |
+| AUTHOR   | Who you are?                                           |
+| EMAIL    | Your contact email                                     |
+| ADDRESS  | Mailing address, this can span over multiple lines     |
+| HOMEPAGE | URL of your website                                    |
+| MOBILE   | Mobile phone                                           |
+| GITHUB   | GitHub user                                            |
+| GITLAB   | GitLab user                                            |
+| LINKEDIN | Linkedin username                                      |
+| PHOTO    | path to photo file                                     |
+| GEOMETRY | Using geometry package to change the scale of the page |
+|          |                                                        |
 
 #+BEGIN_SRC org :tangle basic_cv.org
 ,#+TITLE: My dream job
