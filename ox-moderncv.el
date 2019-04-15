@@ -50,8 +50,41 @@
   :group 'org-export
   :version "25.3")
 
+;;;###autoload
+(defun org-cv-modern-export-to-pdf
+  (&optional async subtreep visible-only body-only ext-plist)
+  "Export current buffer as a ModernCV (PDF).
+If narrowing is active in the current buffer, only export its
+narrowed part.
+If a region is active, export that region.
+A non-nil optional argument ASYNC means the process should happen
+asynchronously.  The resulting file should be accessible through
+the `org-export-stack' interface.
+When optional argument SUBTREEP is non-nil, export the sub-tree
+at point, extracting information from the headline properties
+first.
+When optional argument VISIBLE-ONLY is non-nil, don't export
+contents of hidden elements.
+When optional argument BODY-ONLY is non-nil, only write code
+between \"\\begin{document}\" and \"\\end{document}\".
+EXT-PLIST, when provided, is a property list with external
+parameters overriding Org default settings, but still inferior to
+file-local settings.
+Return PDF file's name."
+  (interactive)
+  (let ((file (org-export-output-file-name ".tex" subtreep)))
+    (org-export-to-file 'moderncv file
+      async subtreep visible-only body-only ext-plist
+(lambda (file) (org-latex-compile file)))))
 ;;; Define Back-End
 (org-export-define-derived-backend 'moderncv 'latex
+  :menu-entry
+  '(?l 1
+       ((?M "As ModernCV PDF file buffer" org-cv-modern-export-to-pdf)
+	      (?m "As ModernCV PDF file and open"
+	          (lambda (a s v b)
+	            (if a (org-cv-modern-export-to-pdf t s v b)
+                (org-open-file (org-cv-modern-export-to-pdf nil s v b)))))))
   :options-alist
   '((:latex-class "LATEX_CLASS" nil "moderncv" t)
     (:cvstyle "CVSTYLE" nil "classic" t)
