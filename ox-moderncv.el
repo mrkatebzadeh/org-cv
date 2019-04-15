@@ -55,6 +55,7 @@
   :options-alist
   '((:latex-class "LATEX_CLASS" nil "moderncv" t)
     (:cvstyle "CVSTYLE" nil "classic" t)
+    (:geometry "GEOMETRY" nil "0.80" t)
     (:cvcolor "CVCOLOR" nil nil t)
     (:mobile "MOBILE" nil nil parse)
     (:homepage "HOMEPAGE" nil nil parse)
@@ -88,6 +89,9 @@ holding export options."
      (org-latex--insert-compiler info)
      ;; Document class and packages.
      (org-latex-make-preamble info)
+     ;; geometry
+     (let ((geometry (org-export-data (plist-get info :geometry) info)))
+       (when geometry (format "\\usepackage[%s]{geometry}\n" geometry)))
      ;; cvstyle
      (let ((cvstyle (org-export-data (plist-get info :cvstyle) info)))
        (when cvstyle (format "\\moderncvstyle{%s}\n" cvstyle)))
