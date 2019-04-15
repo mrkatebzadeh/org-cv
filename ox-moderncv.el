@@ -80,8 +80,8 @@ Return PDF file's name."
 (org-export-define-derived-backend 'moderncv 'latex
   :menu-entry
   '(?l 1
-       ((?M "As ModernCV PDF file buffer" org-cv-modern-export-to-pdf)
-	      (?m "As ModernCV PDF file and open"
+       ((?m "As ModernCV PDF file buffer" org-cv-modern-export-to-pdf)
+	      (?M "As ModernCV PDF file and open"
 	          (lambda (a s v b)
 	            (if a (org-cv-modern-export-to-pdf t s v b)
                 (org-open-file (org-cv-modern-export-to-pdf nil s v b)))))))
